@@ -1,54 +1,125 @@
-const menuBtn=document.getElementById("menuBtn"),nav=document.getElementById("navLinks");
-menuBtn.addEventListener("click",()=>nav.classList.toggle("open"));
-document.querySelectorAll("#navLinks a").forEach(a=>a.addEventListener("click",()=>nav.classList.remove("open")));
-const filters=document.querySelectorAll(".filter"),cards=document.querySelectorAll(".project");
-filters.forEach(btn=>btn.addEventListener("click",()=>{
-  filters.forEach(b=>b.classList.remove("active")); btn.classList.add("active");
-  const f=btn.dataset.filter;
-  cards.forEach(c=>c.style.display=(f==="all"||c.dataset.cat===f)?"flex":"none");
-}));
-/* ===== INTERACTION & ANIMATION ENGINE ===== */
-const progress=document.createElement("div"); progress.id="progress"; document.body.appendChild(progress);
-const glow=document.createElement("div"); glow.id="cursor-glow"; document.body.appendChild(glow);
+import { navigation } from "./components/navigation.js";
+import { SITE_CONFIG } from "./site-config.js";
+import { sectionReveal, pointerEffects } from "./animations/motion.js";
 
-window.addEventListener("scroll",()=>{
-  const h=document.documentElement.scrollHeight-innerHeight;
-  progress.style.width=(h>0?(scrollY/h)*100:0)+"%";
-},{passive:true});
+navigation();
+sectionReveal();
+pointerEffects();
 
-const revealObserver=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");revealObserver.unobserve(entry.target)}})
-},{threshold:.12});
-document.querySelectorAll(".section-head,.about-grid,.skill-grid article,.project,.timeline-item,.edu-card>div,.contact").forEach((el,i)=>{
-  el.classList.add("reveal"); el.style.transitionDelay=(Math.min(i%6,5)*70)+"ms"; revealObserver.observe(el);
-});
+const filters = [...document.querySelectorAll("[data-filter]")];
+const entries = [...document.querySelectorAll("[data-category]")];
+filters.forEach((button) =>
+  button.addEventListener("click", () => {
+    filters.forEach((item) =>
+      item.setAttribute("aria-pressed", String(item === button)),
+    );
+    let visible = 0;
+    entries.forEach((entry) => {
+      entry.hidden =
+        button.dataset.filter !== "all" &&
+        button.dataset.filter !== entry.dataset.category;
+      if (!entry.hidden) {
+        visible++;
+        entry.classList.add("visible");
+      }
+    });
+    document.querySelector(".project-archive").hidden = !document.querySelector(
+      ".archive-row:not([hidden])",
+    );
+    document.querySelector("#filter-status").textContent =
+      `${visible} projects shown`;
+  }),
+);
 
-document.addEventListener("pointermove",e=>{
-  glow.style.left=e.clientX+"px"; glow.style.top=e.clientY+"px";
-  const card=e.target.closest(".project");
-  if(card){
-    const r=card.getBoundingClientRect(), x=e.clientX-r.left, y=e.clientY-r.top;
-    card.style.setProperty("--mx",x+"px"); card.style.setProperty("--my",y+"px");
+let dialogModule;
+let opening = false;
+document.addEventListener("click", async (event) => {
+  const link = event.target.closest("[data-project]");
+  if (!link || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey)
+    return;
+  if (typeof document.querySelector("#project-dialog").showModal !== "function")
+    return;
+  event.preventDefault();
+  if (opening) return;
+  opening = true;
+  try {
+    dialogModule ||= await import("./components/project-dialog.js");
+    if (!dialogModule.openProject(link.dataset.project, link))
+      location.assign(link.href);
+  } catch {
+    location.assign(link.href);
+  } finally {
+    opening = false;
   }
 });
 
-document.querySelectorAll(".project").forEach(card=>{
-  card.addEventListener("pointermove",e=>{
-    if(innerWidth<850)return;
-    const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-    card.style.transform=`perspective(900px) rotateX(${(-y*4).toFixed(2)}deg) rotateY(${(x*5).toFixed(2)}deg) translateY(-5px)`;
-  });
-  card.addEventListener("pointerleave",()=>card.style.transform="");
+function imageFallback(img) {
+  if (img.dataset.fallbackTried) {
+    img
+      .closest(".portrait-frame, .project-visual")
+      ?.classList.add("image-failed");
+    return;
+  }
+  img.dataset.fallbackTried = "true";
+  const picture = img.closest("picture");
+  if (picture) {
+    picture.querySelectorAll("source").forEach((source) => source.remove());
+    img.src = "assets/portrait/harshit-original.jpeg";
+  } else {
+    img.closest(".project-visual")?.classList.add("image-failed");
+  }
+}
+document.querySelectorAll("img").forEach((img) => {
+  img.addEventListener("error", () => imageFallback(img));
+  if (img.complete && !img.naturalWidth) imageFallback(img);
 });
 
-document.querySelectorAll(".btn").forEach(btn=>{
-  btn.addEventListener("pointermove",e=>{
-    if(innerWidth<700)return;
-    const r=btn.getBoundingClientRect();
-    btn.style.transform=`translate(${((e.clientX-r.left)/r.width-.5)*7}px,${((e.clientY-r.top)/r.height-.5)*5}px)`;
-  });
-  btn.addEventListener("pointerleave",()=>btn.style.transform="");
-});
+// Resolve an optional résumé once; leave other links usable during the request.
+const resumeLinks = [...document.querySelectorAll("[data-resume]")];
+if (resumeLinks.length && !resumeLinks[0].href.startsWith("mailto:")) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 4500);
+  fetch(resumeLinks[0].href, { method: "HEAD", signal: controller.signal })
+    .then((response) => {
+      if (
+        response.ok &&
+        response.headers.get("content-type")?.includes("application/pdf")
+      )
+        return;
+      resumeLinks.forEach((link) => {
+        link.href = `mailto:${SITE_CONFIG.email}?subject=Resume%20request`;
+        link.removeAttribute("download");
+        link.setAttribute("aria-label", "Request résumé by email");
+        link.firstChild.textContent = "Request résumé ";
+      });
+    })
+    .catch(() => {
+      /* Do not disable a real file just because a HEAD request timed out. */
+    })
+    .finally(() => clearTimeout(timeout));
+}
 
-// Stagger project entrance more naturally.
-document.querySelectorAll(".projects .project").forEach((el,i)=>el.style.transitionDelay=(i%3*80)+"ms");
+// Load optional network functionality only when the notebook enters view.
+const notebook = document.querySelector("#github");
+async function github() {
+  try {
+    const module = await import("./components/github.js");
+    await module.loadGitHub();
+  } catch {
+    /* Server-rendered repository links remain functional. */
+  }
+}
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (entries.some((entry) => entry.isIntersecting)) {
+        observer.disconnect();
+        github();
+      }
+    },
+    { rootMargin: "200px" },
+  );
+  observer.observe(notebook);
+} else {
+  github();
+}

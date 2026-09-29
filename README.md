@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!-- HARSHIT KUMAR / AI ENGINEERING COMMAND CENTER -->
 <picture>
   <source media="(max-width: 600px)" srcset="assets/hero-mobile.png">
@@ -197,3 +198,105 @@ The calendar preserves GitHub's familiar week/day grid and uses actual public co
 ![harshit@github: next iteration. Online. Build, test, learn, ship. Better questions. Stronger systems. One commit at a time.](assets/ui/signature.svg)
 
 <p align="center"><a href="docs/STATIC-PROFILE.md">Low-motion profile</a> · <a href="docs/EVIDENCE.md">Project evidence</a></p>
+=======
+# Harshit Kumar — Intelligence, engineered.
+
+A cinematic, accessible portfolio built on the existing HTML/CSS/JavaScript site. Static pages, original photography, verified project stories, and a small native JavaScript interaction layer. No production dependencies, API key or backend required.
+
+## Run locally
+
+Use Node.js 24 (see `.nvmrc`) and npm:
+
+```sh
+npm install
+npm run dev
+```
+
+Open http://127.0.0.1:4173. The development server rebuilds when source files change; refresh the browser to see updates.
+
+```sh
+npm run build    # renders the complete static site into dist/
+npm run preview  # builds and serves dist/ on port 4173
+npm run lint     # ESLint and HTML validation; build first
+npm test         # Chrome browser, accessibility and responsive checks
+npm run check    # build, lint and browser tests
+```
+
+Browser tests use installed Google Chrome. If it is not present, run `npx playwright install chrome` before testing. `PORT` overrides the preview server port. No TypeScript is used; JavaScript and HTML are validated directly.
+
+## Structure
+
+- `index.html`: page template, editorial content, landmarks and hero layers.
+- `styles.css`: tokens, typography, layouts, breakpoints and CSS motion.
+- `site-config.js`: identity, social URLs, résumé, portrait source and deployed URL.
+- `data/projects.js`: featured case studies and compact project archive.
+- `data/skills.js`, `data/achievements.js`, `data/socials.js`: structured content.
+- `components/render.js`: build-time section rendering, with all content present in HTML.
+- `components/navigation.js`: sticky navigation, focus handling, active section and progress.
+- `components/project-dialog.js`: lazy-loaded accessible native modal.
+- `components/github.js`: on-demand repository metadata, validation, timeout and session cache.
+- `animations/motion.js`: section reveals, desktop cursor, portrait parallax, magnetic links and project tilt.
+- `scripts/`: deterministic static build, local server, portrait compression and project artwork generation.
+- `assets/`: original résumé, responsive portrait, self-hosted fonts and license files, SVG project illustrations, favicon and social preview.
+- `tests/portfolio.spec.js`: browser tests and axe accessibility scans.
+- `docs/AUDIT.md`: audit findings, evidence sources, content corrections and limitations.
+
+## Replace the portrait
+
+The supplied photograph is retained at `assets/portrait/harshit-original.jpeg`. To use another photograph:
+
+```sh
+npm run portrait -- "/absolute/path/to/new-photo.jpeg"
+npm run build
+```
+
+The command copies the original and generates 640, 960 and 1254-pixel WebP variants at quality 87, without facial manipulation. Prefer a square, high-resolution JPEG portrait. Adjust `.portrait-image` object position in `styles.css` for a different crop; update intrinsic width/height and alt text in `index.html` if the source proportions or subject change.
+
+Visual treatment stays in CSS: edge and reveal masks, atmosphere, rim light, static grain, five faint particles, a one-time sweep, float and scale breathing. Desktop uses subtle pointer and scroll translation. Mobile disables continuous portrait transforms. Reduced-motion mode disables animation, smooth scroll, custom cursor and pointer effects.
+
+## Add a project
+
+1. Add a reviewed entry to `projects` in `data/projects.js`, following an existing case study. Use a unique `id`, a filter category (`ai`, `web`, `game`, `security`), verified stack and repository URL. Omit `live` if no real demo exists.
+2. Add an illustration named `assets/projects/<visual>.svg`. Set `visual` to that filename without extension. The current covers are concept illustrations, never presented as screenshots.
+3. Supply a concise problem, approach, features and architecture based on the implementation. Use `note` to explain material prototype limitations and `source` to identify the inspected code.
+4. For a smaller project, add only an `archive` entry. Mark forks explicitly.
+5. Rebuild. The case study, filter and all-work count use the same central data.
+
+To regenerate existing SVG covers and the social preview, run `node scripts/artwork.mjs`.
+
+## Links, résumé and content
+
+Edit `site-config.js` for links. GitHub, LinkedIn and email are verified. LeetCode stays `null` until an actual profile is supplied; setting it adds it to the social groups. The existing résumé remains `assets/Harshit_Kumar_Resume.pdf`.
+
+If replacing the résumé, either overwrite that PDF or set `resume: 'public/resume.pdf'` and put the file there. Build-time and runtime missing-file handling offers an email résumé request rather than a broken download. Set `resume: null` to use the conventional `public/resume.pdf` location.
+
+The experience section describes education and independent project work, not employment. Unverified achievement dates are omitted. No accuracy, user-count or performance statistics are invented. See the audit for source details and the corrected Unity and fork attributions.
+
+## GitHub
+
+The repository notebook starts with static links and descriptions. Near the viewport it fetches the public GitHub repositories endpoint once, then enhances the featured entries with language, last push date and stars when positive. Successful results are cached in session storage for 15 minutes. No token is shipped. Timeouts, rate limits, malformed data and blocked storage do not remove the static links. There is no fabricated contribution graph.
+
+## Deployment
+
+Set `SITE_CONFIG.siteUrl` to your actual HTTPS URL with a trailing slash, such as your real domain or GitHub Pages project URL. This enables the canonical URL, absolute Open Graph image, Person URL and sitemap. Leaving it null works locally, but social crawlers need an absolute image URL on deployment.
+
+Run:
+
+```sh
+npm ci
+npm run build
+```
+
+Publish **only `dist/`**. Do not publish the repository root: `index.html` there is a build template.
+
+- **Netlify:** included `netlify.toml` uses `npm run build` and `dist`.
+- **Cloudflare Pages / another static host:** use Node 24, build command `npm run build`, output directory `dist`.
+- **GitHub Pages:** upload `dist` as the Pages artifact. Assets use relative paths for project subdirectories.
+- **Existing S3 hosting:** configure the bucket and HTTPS/CloudFront separately, set `BUCKET_NAME` and optionally `AWS_REGION`, then run `./deploy.ps1` or `bash deploy.sh`. The revised scripts build first and synchronize only `dist`; they neither create buckets, change public-access policies nor delete unrelated objects. Invalidate CloudFront after an update if necessary.
+
+The site has not been published by this implementation task. External project frontends can load while their own backends are unavailable; case studies distinguish interface availability from functional inference.
+
+## Verification
+
+The checked-in tests cover project filtering, modal dismissal and focus return, mobile menu behavior, GitHub success/failure/cache, portrait fallback, missing résumé, no-JavaScript content, reduced motion, local media and layouts at 360/390/768/1024/1440 pixels. Axe runs against the page and open project dialog. Local screenshots and performance audit output are ignored under `artifacts/`.
+>>>>>>> 7f656f3 (Updating details and adding animations)

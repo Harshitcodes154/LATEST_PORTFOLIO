@@ -1,144 +1,509 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Harshit Kumar — B.Tech CSE student, AI/ML Developer, GenAI Builder and Full-Stack Developer.">
-  <title>Harshit Kumar | AI/ML Developer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <div id="page-loader"><div class="loader-mark">HK<span>.</span></div><div class="loader-line"><i></i></div></div>
-  <header class="nav">
-    <a class="brand" href="#home">HK<span>.</span></a>
-    <button class="menu" id="menuBtn" aria-label="Open menu">☰</button>
-    <nav id="navLinks">
-      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a>
-      <a href="#achievements">Achievements</a><a href="#education">Education</a><a href="#contact">Contact</a>
-    </nav>
-  </header>
-
-  <main>
-    <section id="home" class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">B.Tech CSE • AI/ML • GenAI • Full-Stack</p>
-        <h1>Hi, I'm <span>Harshit Kumar.</span></h1>
-        <p class="hero-text">I build intelligent products at the intersection of AI, machine learning, cloud and software engineering.</p>
-        <div class="actions">
-          <a class="btn primary" href="#projects">Explore Projects</a>
-          <a class="btn ghost" href="assets/Harshit_Kumar_Resume.pdf" download>Download Resume</a>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101110">
+    <meta
+      name="description"
+      content="Harshit Kumar — B.Tech AI &amp; ML student and creative technologist. Explore computer vision, intelligent software and interactive systems.">
+    <meta property="og:type" content="website">
+    <meta
+      property="og:title"
+      content="Harshit Kumar — Intelligence, engineered.">
+    <meta
+      property="og:description"
+      content="AI/ML, engineering and creative technology. Selected work by Harshit Kumar.">
+    <meta property="og:image" content="{{OG_IMAGE}}">
+    <meta
+      property="og:image:alt"
+      content="Harshit Kumar — AI/ML, engineering and creative technology">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Harshit Kumar — AI/ML &amp; Creative Technology</title>
+    {{CANONICAL}}
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link
+      rel="preload"
+      href="assets/fonts/space-grotesk-latin.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin>
+    <link
+      rel="preload"
+      as="image"
+      href="assets/portrait/harshit-960.webp"
+      imagesrcset="assets/portrait/harshit-640.webp 640w, assets/portrait/harshit-960.webp 960w, assets/portrait/harshit-1254.webp 1254w"
+      imagesizes="(max-width: 700px) 95vw, 58vw">
+    <link rel="stylesheet" href="styles.css">
+    <script type="application/ld+json">
+      {{PERSON_SCHEMA}}
+    </script>
+    <script type="module" src="script.js"></script>
+    <noscript
+      ><style>
+        .project-filters,
+        .menu-toggle {
+          display: none !important;
+        }
+        .site-header {
+          position: relative;
+          height: auto;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          flex-wrap: wrap;
+        }
+        .site-header nav {
+          display: flex;
+          position: static;
+          flex-wrap: wrap;
+          max-height: none;
+        }
+        .nav-sections {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .hero {
+          padding-top: 40px;
+        }
+      </style></noscript
+    >
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
+    <header class="site-header" id="header">
+      <a class="brand" href="#home" aria-label="Harshit Kumar, home"
+        >h<span>k</span><i>.</i></a
+      >
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-expanded="false"
+        aria-controls="navigation"
+      >
+        <span>Menu</span><span class="menu-lines" aria-hidden="true"></span>
+      </button>
+      <nav id="navigation" aria-label="Main navigation">
+        <div class="nav-sections">
+          <a href="#home" aria-current="location">Home</a
+          ><a href="#about">About</a><a href="#projects">Projects</a
+          ><a href="#experience">Experience</a><a href="#skills">Skills</a
+          ><a href="#achievements">Achievements</a
+          ><a href="#contact">Contact</a>
         </div>
-        <div class="socials">
-          <a href="mailto:harshitkumar7212@gmail.com">Gmail</a>
-          <a href="https://www.linkedin.com/in/harshit-kumar-59783b311/" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/Harshitcodes154" target="_blank" rel="noopener">GitHub</a>
+        <div class="nav-external">
+          <a
+            href="{{GITHUB}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub (opens in new tab)"
+            >{{GITHUB_ICON}}</a
+          ><a
+            href="{{LINKEDIN}}"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn (opens in new tab)"
+            >{{LINKEDIN_ICON}}</a
+          ><a class="nav-resume" href="{{RESUME}}" data-resume download
+            >Résumé {{ARROW}}</a
+          >
         </div>
-      </div>
-      <div class="hero-card">
-        <div class="orb"></div>
-        <div class="code-window">
-          <div class="dots">● ● ●</div>
-          <pre><code>const harshit = {
-  focus: ["AI", "ML", "GenAI"],
-  builds: ["Agents", "CV", "Web Apps"],
-  cloud: ["AWS", "GCP"],
-  mindset: "Always building 🚀"
-};</code></pre>
+      </nav>
+    </header>
+    <main id="main">
+      <section id="home" class="hero" aria-labelledby="hero-title">
+        <div class="hero-ambient" aria-hidden="true"></div>
+        <div class="hero-grid" aria-hidden="true"></div>
+        <div class="hero-topline">
+          <span><i class="status-dot"></i> A WORK IN CONSTANT EVOLUTION</span
+          ><span>PERSONAL PORTFOLIO / 2026</span>
         </div>
-      </div>
-    </section>
-
-    <section id="about" class="section">
-      <div class="section-head"><span>01</span><h2>About Me</h2></div>
-      <div class="about-grid">
-        <div>
-          <h3>Building ideas into intelligent products.</h3>
-          <p>I'm a B.Tech Computer Science Engineering student at Vellore Institute of Technology, Andhra Pradesh, focused on Artificial Intelligence & Machine Learning. I enjoy building real-world applications, AI agents, computer-vision systems, cloud solutions and full-stack products.</p>
-          <p>My work spans Generative AI, NLP, computer vision, geospatial intelligence, cybersecurity, backend systems and cloud deployment. I also enjoy participating in hackathons and turning problem statements into working prototypes.</p>
+        <div class="hero-copy">
+          <p class="eyebrow hero-role">
+            AI/ML · ENGINEERING · CREATIVE TECHNOLOGY
+          </p>
+          <h1 id="hero-title">
+            <span>HARSHIT</span
+            ><span class="name-second"
+              >KUMAR<span class="name-period">.</span></span
+            >
+          </h1>
+          <div class="hero-description">
+            <span class="small-cross" aria-hidden="true">+</span>
+            <p>
+              I turn complex ideas into<br><strong
+                >intelligent, tangible experiences.</strong
+              ><br><span class="hero-subline"
+                >B.Tech AI &amp; ML student. Engineer. Builder.</span
+              >
+            </p>
+          </div>
+          <div class="hero-actions">
+            <a class="button button-primary magnetic" href="#projects"
+              >Discover my work {{ARROW}}</a
+            ><a class="text-link" href="{{RESUME}}" data-resume download
+              >View résumé {{ARROW}}</a
+            >
+          </div>
+          <div class="hero-socials">{{SOCIALS}}</div>
         </div>
-        <div class="stats">
-          <div><b>8.23/10</b><span>CGPA</span></div>
-          <div><b>13</b><span>GitHub Repositories</span></div>
-          <div><b>AI/ML</b><span>Primary Focus</span></div>
-          <div><b>Cloud</b><span>AWS + GCP</span></div>
+        <div class="portrait-stage" data-cursor="EXPLORE">
+          <div class="portrait-orbit" aria-hidden="true"></div>
+          <div class="portrait-frame">
+            <div class="portrait-motion">
+              <picture
+                ><source
+                  type="image/webp"
+                  srcset="
+                    assets/portrait/harshit-640.webp   640w,
+                    assets/portrait/harshit-960.webp   960w,
+                    assets/portrait/harshit-1254.webp 1254w
+                  "
+                  sizes="(max-width: 700px) 95vw, 58vw">
+                <img
+                  class="portrait-image"
+                  src="assets/portrait/harshit-original.jpeg"
+                  alt="Harshit Kumar, smiling in a white shirt"
+                  width="1254"
+                  height="1254"
+                  fetchpriority="high"></picture>
+            </div>
+            <div class="portrait-shade" aria-hidden="true"></div>
+            <div class="portrait-rim" aria-hidden="true"></div>
+            <div class="portrait-sweep" aria-hidden="true"></div>
+          </div>
+          <div class="portrait-grain" aria-hidden="true"></div>
+          <div class="portrait-particles" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <div class="portrait-label">
+            <span class="status-dot"></span> THE HUMAN BEHIND THE CODE<span
+              class="label-line"
+            ></span>
+          </div>
+          <div class="portrait-coordinate" aria-hidden="true">
+            [ HUMAN × TECHNOLOGY ]
+          </div>
         </div>
+        <div class="hero-bottom">
+          <a href="#about">{{DOWN}}<span>SCROLL TO EXPLORE</span></a
+          ><span>IDEAS INTO SYSTEMS. SYSTEMS INTO EXPERIENCES.</span
+          ><span class="hero-index">01 — 08</span>
+        </div>
+      </section>
+      <div class="discipline-strip" role="group" aria-label="Areas of interest">
+        <span>ARTIFICIAL INTELLIGENCE</span><i>✳</i
+        ><span>SOFTWARE ENGINEERING</span><i>✳</i
+        ><span>CREATIVE TECHNOLOGY</span><i>✳</i><span>ALWAYS BUILDING</span>
       </div>
-    </section>
-
-    <section id="skills" class="section alt">
-      <div class="section-head"><span>02</span><h2>Skills & Tech Stack</h2></div>
-      <div class="skill-grid">
-        <article><h3>AI & Machine Learning</h3><p>Generative AI · NLP · CNN · TensorFlow · TensorFlow Lite · PyTorch · scikit-learn · Grad-CAM · Gemini API · Groq API · Whisper API</p></article>
-        <article><h3>Programming</h3><p>Python · Java · C · SQL · OOP · DSA · DBMS</p></article>
-        <article><h3>Web & Backend</h3><p>Node.js · Express.js · FastAPI · React · Next.js · REST APIs · RDBMS · SQL Schema Design</p></article>
-        <article><h3>Cloud & DevOps</h3><p>AWS EC2 · S3 · Lambda · IAM · API Gateway · Google Cloud · Vertex AI · Cloud Run · Docker · Streamlit</p></article>
-        <article><h3>Cybersecurity</h3><p>Cryptography · Network Security · Penetration Testing · Web Exploitation · Reverse Engineering · Network Forensics</p></article>
-        <article><h3>Other Technologies</h3><p>CesiumJS · Three.js · Vite · Gradio · OpenCV · OpenStreetMap · NASA FIRMS · Supabase · Redis · BullMQ</p></article>
-      </div>
-    </section>
-
-    <section id="projects" class="section">
-      <div class="section-head"><span>03</span><h2>Featured Projects</h2></div>
-      <div class="filters">
-        <button class="filter active" data-filter="all">All</button>
-        <button class="filter" data-filter="ai">AI / ML</button>
-        <button class="filter" data-filter="web">Web</button>
-        <button class="filter" data-filter="security">Security</button>
-        <button class="filter" data-filter="game">Game / 3D</button>
-      </div>
-      <div class="projects">
-        <article class="project" data-cat="ai"><div class="project-top"><span>AI / ML</span><span>Featured • Hackathon Winner</span></div><h3>WAFER-GPT</h3><p>AI-powered semiconductor wafer intelligence project combining computer vision with a conversational AI layer to analyze wafer defects and surface useful insights.</p><div class="tags">FastAPI · TensorFlow · Gemini · Python · Computer Vision · GenAI</div><a href="https://github.com/Harshitcodes154/WAFER-GPT" target="_blank" rel="noopener">View Repository ↗</a></article>
-        <article class="project" data-cat="ai"><div class="project-top"><span>AI / ML</span><span>Featured</span></div><h3>ThermoWatch AI</h3><p>Satellite thermal-hotspot intelligence platform that detects, clusters and analyzes thermal events, attributes nearby facilities and generates an AI-assisted 0–100 risk score.</p><div class="tags">Python · ML · NASA FIRMS · OpenStreetMap · Geospatial · Streamlit</div><a href="https://github.com/Harshitcodes154/ThermoWatch-AI" target="_blank" rel="noopener">View Repository ↗</a></article>
-        <article class="project" data-cat="web"><div class="project-top"><span>Full-Stack</span><span>Project</span></div><h3>Smart Classroom & Timetable Scheduler</h3><p>Intelligent timetable platform for clash-free scheduling, faculty/room allocation, real-time changes, dashboards and role-based access.</p><div class="tags">React · Node.js · Express · SQL · Constraint Solvers · Redis · BullMQ</div><a href="https://github.com/Harshitcodes154/SIH_TimeTable" target="_blank" rel="noopener">View Repository ↗</a></article>
-        <article class="project" data-cat="game"><div class="project-top"><span>3D Web</span><span>Project</span></div><h3>Web Flight Simulator</h3><p>Browser-based flight simulator using a hybrid Three.js + CesiumJS architecture, combining local 3D aircraft effects with global-scale terrain.</p><div class="tags">JavaScript · Three.js · CesiumJS · Vite · WebGL</div><a href="https://github.com/Harshitcodes154/web-flight-simulator" target="_blank" rel="noopener">View Repository ↗</a></article>
-        <article class="project" data-cat="web"><div class="project-top"><span>Full-Stack</span><span>Project</span></div><h3>Ashoka Cooling Point</h3><p>Modern TypeScript/Vite web application with a structured frontend, Supabase migrations and responsive UI architecture.</p><div class="tags">TypeScript · Vite · Tailwind CSS · Supabase</div><a href="https://github.com/Harshitcodes154/Ashoka-Cooling-Point" target="_blank" rel="noopener">View Repository ↗</a></article>
-        <article class="project" data-cat="security"><div class="project-top"><span>Cybersecurity</span><span>Project</span></div><h3>Malware Detection</h3><p>Security-focused project containing malware analysis code, YARA signatures, metadata analysis and test artifacts.</p><div class="tags">Python · YARA · Malware Analysis · Security</div><a href="https://github.com/Harshitcodes154/Malware_detection" target="_blank" rel="noopener">View Repository ↗</a></article>
-        <article class="project" data-cat="ai"><div class="project-top"><span>GenAI</span><span>Project</span></div><h3>Viral Assistant</h3><p>GenAI assistant concept built around Google ADK and Gemini to transform technical content into concise, social-ready summaries.</p><div class="tags">Google ADK · Gemini · Vertex AI · FastAPI · Cloud Run</div><a href="https://github.com/Harshitcodes154" target="_blank" rel="noopener">More on GitHub ↗</a></article>
-        <article class="project" data-cat="game"><div class="project-top"><span>Game Development</span><span>Hackathon</span></div><h3>Operation Sindoor — Air Defense</h3><p>Original fictional browser aerial-combat game developed as a hackathon project, using modern 3D web technologies and an interactive combat loop.</p><div class="tags">JavaScript · CesiumJS · 3D Web · Game Development</div><a href="https://github.com/Harshitcodes154" target="_blank" rel="noopener">More on GitHub ↗</a></article></div>
-    </section>
-
-    <section id="achievements" class="section alt">
-      <div class="section-head"><span>04</span><h2>Hackathons & Achievements</h2></div>
-      <div class="timeline">
-        <div class="timeline-item"><span>01</span><div><h3>Winner — Android Club Hackathon, VIT-AP</h3><p>Won the Android Club hackathon with <strong>WAFER-GPT</strong>, an AI-powered semiconductor wafer analysis project. Built and presented the solution as a solo project.</p></div></div>
-        <div class="timeline-item"><span>02</span><div><h3>Google Gen AI Academy — APAC Edition</h3><p>Tracks 1 & 2. Hands-on work with Generative AI, agentic workflows, prompt engineering, Docker containerization and serverless AI deployment on Google Cloud Run.</p></div></div>
-        <div class="timeline-item"><span>03</span><div><h3>Winner — Null Matrix CTF</h3><p>Solved challenges spanning Web Exploitation, Cryptography, Reverse Engineering and Network Forensics under timed constraints.</p></div></div>
-        <div class="timeline-item"><span>04</span><div><h3>PixelHack — VIT-AP</h3><p>Game-development hackathon project involving a browser-based aviation game and 3D/geospatial web technologies.</p></div></div>
-        <div class="timeline-item"><span>05</span><div><h3>SanDisk Hackathon</h3><p>Participated in the AI/ML-focused hackathon track and explored an applied AI problem-solving approach.</p></div></div>
-        <div class="timeline-item"><span>06</span><div><h3>Technical Expo</h3><p>Presented AI/ML and software projects with emphasis on architecture, implementation, technology choices and real-world applications.</p></div></div></div>
-    </section>
-
-    <section id="education" class="section">
-      <div class="section-head"><span>05</span><h2>Education</h2></div>
-      <div class="edu-card">
-        <div><span>Aug 2024 — Present</span><h3>Bachelor of Technology — Computer Science Engineering</h3><p>Vellore Institute of Technology, Andhra Pradesh</p><strong>CGPA: 8.23 / 10.0</strong></div>
-        <div><span>2022 — 2023</span><h3>Intermediate — PCM</h3><p>St. Anthony Public School, Uttar Pradesh</p></div>
-        <div><span>2020 — 2021</span><h3>Secondary School — CBSE</h3><p>St. Anthony Public School, Uttar Pradesh</p></div>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact">
-      <div>
-        <p class="eyebrow">Let's build something useful.</p>
-        <h2>Have an idea or opportunity?</h2>
-        <p>I'm open to conversations around AI/ML, GenAI, software engineering, hackathons, research-oriented projects and internships.</p>
-      </div>
-      <div class="contact-actions">
-        <a class="btn primary" href="mailto:harshitkumar7212@gmail.com">Email Me</a>
-        <a class="btn ghost" href="https://www.linkedin.com/in/harshit-kumar-59783b311/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn ghost" href="https://github.com/Harshitcodes154" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn ghost" href="assets/Harshit_Kumar_Resume.pdf" download>Download Resume</a>
-      </div>
-    </section>
-  </main>
-
-  <footer>© 2026 Harshit Kumar · Built for the web · Hosted with Amazon S3 Static Website Hosting</footer>
-  <script src="script.js"></script>
-<script>
-window.addEventListener("load",()=>{setTimeout(()=>document.body.classList.add("loaded"),450)});
-</script>
-</body>
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="section-label">
+          <span>01 / THE PERSON</span><span>CURIOUS BY DEFAULT</span>
+        </div>
+        <div class="about-layout">
+          <h2 id="about-title" class="editorial-title reveal">
+            An engineering mind.<br>A creative
+            <span class="serif-accent">instinct.</span>
+          </h2>
+          <div class="about-copy reveal">
+            <p>
+              I’m Harshit, a B.Tech Computer Science student specializing in AI
+              &amp; ML at <strong>VIT-AP University.</strong>
+            </p>
+            <p>
+              My work starts with a question: how can this become something
+              useful? Sometimes the answer is a model that explains a wafer
+              defect. Sometimes it’s a satellite-data pipeline. Sometimes it’s
+              an experiment in flight.
+            </p>
+            <p>
+              I’m exploring the space between artificial intelligence, software
+              and interactive experiences—building, testing, and learning
+              through the process.
+            </p>
+            <a class="text-link" href="#experience"
+              >A little of the journey {{ARROW}}</a
+            >
+          </div>
+        </div>
+        <div class="focus-line reveal">
+          <span>CURRENT ORBIT</span>
+          <p>
+            Computer vision <i>/</i> Generative AI <i>/</i> Cloud
+            <i>/</i> Interactive systems
+          </p>
+        </div>
+      </section>
+      <section
+        class="section projects-section"
+        id="projects"
+        aria-labelledby="projects-title"
+      >
+        <div class="section-label">
+          <span>02 / SELECTED WORK</span
+          ><span>FROM EXPLORATION TO IMPLEMENTATION</span>
+        </div>
+        <div class="section-heading reveal">
+          <h2 id="projects-title">
+            Ideas, made <span class="serif-accent">real.</span>
+          </h2>
+          <p>
+            A closer look at the systems I build.<br>The thinking. The
+            technology. The details.
+          </p>
+        </div>
+        <div class="project-filters" role="group" aria-label="Filter projects">
+          <button type="button" data-filter="all" aria-pressed="true">
+            All work <span>{{PROJECT_COUNT}}</span></button
+          ><button type="button" data-filter="ai" aria-pressed="false">
+            AI / ML</button
+          ><button type="button" data-filter="web" aria-pressed="false">
+            Web</button
+          ><button type="button" data-filter="game" aria-pressed="false">
+            Interactive</button
+          ><button type="button" data-filter="security" aria-pressed="false">
+            Security
+          </button>
+        </div>
+        <p class="sr-only" id="filter-status" role="status"></p>
+        <div class="project-stories">{{PROJECTS}}</div>
+        <div class="project-archive">
+          <div class="archive-heading">
+            <h3>More from the workbench</h3>
+            <span>EXPERIMENTS &amp; APPLICATIONS</span>
+          </div>
+          {{ARCHIVE}}
+        </div>
+      </section>
+      <section
+        class="section experience"
+        id="experience"
+        aria-labelledby="experience-title"
+      >
+        <div class="section-label">
+          <span>03 / EXPERIENCE &amp; EDUCATION</span
+          ><span>LEARNING THROUGH BUILDING</span>
+        </div>
+        <div class="experience-layout">
+          <div class="reveal">
+            <h2 id="experience-title">
+              Still learning.<br>Already
+              <span class="serif-accent">building.</span>
+            </h2>
+            <p class="muted">
+              My experience is taking shape through university, independent
+              projects and hackathons.
+            </p>
+          </div>
+          <div class="education-record reveal">
+            <span class="eyebrow">AUG 2024 — PRESENT</span>
+            <h3>B.Tech, Computer Science<br>&amp; Engineering</h3>
+            <p>VIT-AP University</p>
+            <div class="education-focus">
+              Specialization
+              <span>Artificial Intelligence &amp; Machine Learning</span>
+            </div>
+            <div class="education-practice">
+              <span>IN PRACTICE</span>
+              <p>
+                Model inference, API development, product interfaces and
+                interactive prototypes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section
+        class="section skills-section"
+        id="skills"
+        aria-labelledby="skills-title"
+      >
+        <div class="section-label">
+          <span>04 / THE TOOLKIT</span><span>CHOSEN FOR THE PROBLEM</span>
+        </div>
+        <div class="skills-layout">
+          <div class="skills-intro reveal">
+            <h2 id="skills-title">
+              Different tools.<br>One
+              <span class="serif-accent">mindset.</span>
+            </h2>
+            <p class="muted">
+              From data to a working interface.<br>The technologies behind my
+              projects and learning.
+            </p>
+            <div class="toolkit-mark" aria-hidden="true">
+              <span>〈</span><i>✳</i><span>〉</span>
+            </div>
+          </div>
+          <div class="skills-list reveal">{{SKILLS}}</div>
+        </div>
+      </section>
+      <section
+        class="section achievements"
+        id="achievements"
+        aria-labelledby="achievements-title"
+      >
+        <div class="section-label">
+          <span>05 / MILESTONES</span><span>LEARNING OUTSIDE THE SYLLABUS</span>
+        </div>
+        <div class="section-heading reveal">
+          <h2 id="achievements-title">
+            Putting ideas<br>to the <span class="serif-accent">test.</span>
+          </h2>
+          <p>
+            Hackathons, technical challenges<br>and a few meaningful
+            milestones.
+          </p>
+        </div>
+        <ol class="timeline">
+          {{ACHIEVEMENTS}}
+        </ol>
+      </section>
+      <section
+        class="section github-section"
+        id="github"
+        aria-labelledby="github-title"
+      >
+        <div class="section-label">
+          <span>06 / IN THE OPEN</span><span>THE WORK CONTINUES</span>
+        </div>
+        <div class="github-layout">
+          <div class="reveal">
+            <span class="github-large">{{GITHUB_ICON}}</span>
+            <h2 id="github-title">
+              The process<br>is <span class="serif-accent">public.</span>
+            </h2>
+            <p class="muted">
+              Experiments, iterations and the code behind the projects. Follow
+              along on GitHub.
+            </p>
+            <a
+              class="text-link"
+              href="{{GITHUB}}"
+              target="_blank"
+              rel="noopener noreferrer"
+              >@Harshitcodes154 {{ARROW}}</a
+            >
+          </div>
+          <div class="github-panel reveal">
+            <div class="github-panel-head">
+              <span><i class="status-dot"></i> REPOSITORY NOTEBOOK</span
+              >{{GITHUB_ICON}}
+            </div>
+            <div id="github-repos">
+              <a
+                class="repo-row"
+                href="https://github.com/Harshitcodes154/WAFER-GPT"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >WAFER-GPT<small
+                    >Computer vision &amp; explainable AI</small
+                  ></span
+                >{{ARROW}}</a
+              ><a
+                class="repo-row"
+                href="https://github.com/Harshitcodes154/OperationSindoor"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >OperationSindoor<small
+                    >Unity &amp; interactive systems</small
+                  ></span
+                >{{ARROW}}</a
+              ><a
+                class="repo-row"
+                href="https://github.com/Harshitcodes154/ThermoWatch-AI"
+                target="_blank"
+                rel="noopener noreferrer"
+                ><span
+                  >ThermoWatch-AI<small
+                    >Satellite data &amp; spatial intelligence</small
+                  ></span
+                >{{ARROW}}</a
+              >
+            </div>
+            <p id="github-status" class="github-status" role="status">
+              Selected repositories · Explore the source
+            </p>
+          </div>
+        </div>
+      </section>
+      <section class="section philosophy" aria-labelledby="philosophy-title">
+        <div class="section-label">
+          <span>07 / THE APPROACH</span><span>BUILD WITH INTENT</span>
+        </div>
+        <h2 id="philosophy-title" class="reveal">
+          Make it work.<br>Make it understandable.<br><span
+            class="serif-accent"
+            >Make it matter.</span
+          >
+        </h2>
+        <p class="reveal">
+          A model is a starting point. The real work is connecting the data, the
+          decisions and the experience into something people can use.
+        </p>
+        <div class="build-loop reveal">
+          <span>QUESTION</span><i>→</i><span>EXPERIMENT</span><i>→</i
+          ><span>BUILD</span><i>→</i><span>REFINE</span>
+        </div>
+      </section>
+      <section
+        class="section contact"
+        id="contact"
+        aria-labelledby="contact-title"
+      >
+        <div class="contact-ambient" aria-hidden="true"></div>
+        <div class="section-label">
+          <span>08 / WHAT’S NEXT?</span><span>START WITH A CONVERSATION</span>
+        </div>
+        <p class="eyebrow reveal">
+          AN IDEA, A COLLABORATION, A NEW POSSIBILITY.
+        </p>
+        <h2 id="contact-title" class="reveal">
+          Let’s build something<br><span class="serif-accent"
+            >intelligent.</span
+          ><a
+            class="contact-arrow magnetic"
+            href="mailto:{{EMAIL}}"
+            aria-label="Email Harshit Kumar"
+            >{{ARROW}}</a
+          >
+        </h2>
+        <div class="contact-bottom">
+          <a class="email-link" href="mailto:{{EMAIL}}"
+            >{{EMAIL}}<span class="email-underline"></span></a
+          ><a class="text-link" href="{{RESUME}}" data-resume download
+            >Get my résumé {{ARROW}}</a
+          >
+        </div>
+        <div class="contact-socials">{{SOCIALS}}</div>
+      </section>
+    </main>
+    <footer class="footer">
+      <a class="brand" href="#home" aria-label="Back to home"
+        >h<span>k</span><i>.</i></a
+      >
+      <p>© 2026 Harshit Kumar</p>
+      <span>THOUGHTFULLY BUILT. ALWAYS EVOLVING.</span
+      ><a href="#home">Back to top ↑</a>
+    </footer>
+    <dialog
+      class="project-dialog"
+      id="project-dialog"
+      aria-labelledby="dialog-title"
+    >
+      <button
+        class="dialog-close"
+        type="button"
+        aria-label="Close project details"
+      >
+        Close <span aria-hidden="true">×</span>
+      </button>
+      <div id="dialog-content"></div>
+    </dialog>
+    <div class="custom-cursor" aria-hidden="true"><span></span></div>
+  </body>
 </html>

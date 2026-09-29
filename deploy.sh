@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-set -e
+set -euo pipefail
+cd "$(dirname "$0")"
 : "${AWS_REGION:=ap-south-1}"
-: "${BUCKET_NAME:?Set BUCKET_NAME first}"
-aws s3api create-bucket --bucket "$BUCKET_NAME" --region "$AWS_REGION" --create-bucket-configuration LocationConstraint="$AWS_REGION" 2>/dev/null || true
-aws s3 website "s3://$BUCKET_NAME" --index-document index.html --error-document index.html
-aws s3 sync . "s3://$BUCKET_NAME" --delete --exclude "*.sh" --exclude "*.ps1"
-echo "Uploaded. Check the S3 static website endpoint in AWS Console."
+: "${BUCKET_NAME:?Set BUCKET_NAME to your existing S3 website bucket}"
+npm run build
+# Do not upload source files, dependencies, Git metadata or remove unrelated objects.
+aws s3 sync ./dist "s3://$BUCKET_NAME" --region "$AWS_REGION" --cache-control 'public,max-age=3600'
+aws s3 cp ./dist/index.html "s3://$BUCKET_NAME/index.html" --region "$AWS_REGION" --cache-control 'no-cache' --content-type 'text/html'
+echo 'Uploaded dist/. Use your configured HTTPS/CloudFront domain.'
