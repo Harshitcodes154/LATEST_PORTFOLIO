@@ -289,6 +289,7 @@ npm run build
 
 Publish **only `dist/`**. Do not publish the repository root: `index.html` there is a build template.
 
+- **Vercel:** included `vercel.json` sets the framework to Other, installs with `npm ci`, runs `npm run build`, and publishes `dist`. Node is pinned to `24.x`. Use the repository root as the project's Root Directory. Commit and push this configuration, then deploy the new commit; redeploying an older commit will not include the fix. If configuring manually, set Output Directory to `dist`, not `public`.
 - **Netlify:** included `netlify.toml` uses `npm run build` and `dist`.
 - **Cloudflare Pages / another static host:** use Node 24, build command `npm run build`, output directory `dist`.
 - **GitHub Pages:** upload `dist` as the Pages artifact. Assets use relative paths for project subdirectories.
